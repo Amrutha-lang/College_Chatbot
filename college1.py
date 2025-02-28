@@ -34,6 +34,25 @@ st.write("Welcome to the college Chatbot! Ask me Anything about the collge")
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+if prompt := st.chat_input("Say something..."):
+    # Add user message to chat history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.markdown(prompt)
+   closest_answer=find_cloasest_question(prompt,vectorizer,question_vectors,df)
+    if closest_answer:
+      st.session_state.messages.append({"role":"assistant","content":closest_answer})
+      with st.chat_message("assistant"):
+        st.markdown(closest_answer)
+    else:
+      try:
+        response=model.generate_content(prompt)
+        st.session_state.messages.append({"role":"assistant","content":response.text})
+        with st.chat_message("assistant"):
+          st.markdown(response.text)
+      except Exception as e:
+        st.error(f"Sorry, I couldn't generate a response.Error: {e}")
+    
         
   
     
