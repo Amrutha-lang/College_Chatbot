@@ -17,4 +17,4 @@ df['Question']=df['Question'].str.lower()
 df['Answer']=df['Answer'].str.lower()
 vectorizer=Tfidfvectorizer()
 question_vectors=vectorizer.fit_transform(df['Question])
-                                          
+
