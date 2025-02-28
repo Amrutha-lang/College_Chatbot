@@ -29,6 +29,9 @@ def find_closest_question(user_query,vectorizer,question_vectors,df):
     return df.iloc[best_match_index]['Anwser']
   else:
     return None
+st.title("Svecw college Chatbot")
+st.write("Welcome to the college Chatbot! Ask me Anything about the collge")
+
   
     
     
