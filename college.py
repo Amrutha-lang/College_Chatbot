@@ -26,7 +26,7 @@ def find_closest_question(user_query,vectorizer,question_vectors,df):
   best_match_index=similarities.argmax()
   best_match_score=similarities[best_match_index]
   if best_match_score>0.3:
-    return df.iloc[best_match_index]['Anwser']
+    return df.iloc[best_match_index]['Answer']
   else:
     return None
 st.title("Svecw college Chatbot")
